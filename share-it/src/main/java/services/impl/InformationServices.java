@@ -1,8 +1,11 @@
 package services.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import services.interfaces.InformationServicesLocal;
 import services.interfaces.InformationServicesRemote;
@@ -23,7 +26,6 @@ public class InformationServices implements InformationServicesRemote,
 	 * Default constructor.
 	 */
 	public InformationServices() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -44,6 +46,14 @@ public class InformationServices implements InformationServicesRemote,
 		} catch (Exception e) {
 		}
 		return b;
+	}
+
+	@Override
+	public List<Information> findAllPostsByIdCustomer(Integer idCustomer) {
+		String jpql = "select i from Information i where i.user.id = :param1";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param1", idCustomer);
+		return query.getResultList();
 	}
 
 }

@@ -67,4 +67,10 @@ public class Information implements Serializable {
 		this.category = category;
 	}
 
+	@Override
+	public String toString() {
+		return "Information [id=" + id + ", info=" + info + ", user=" + user
+				+ ", category=" + category + "]";
+	}
+
 }
