@@ -1,11 +1,13 @@
 package domain;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Category
@@ -25,7 +27,14 @@ public class Category implements Serializable {
 	public Category() {
 		super();
 	}   
-	@Id    
+	
+	public Category(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Id   
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.id;
 	}
