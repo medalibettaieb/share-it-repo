@@ -3,6 +3,8 @@ package domain;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,8 @@ public class Category implements Serializable {
 	private Integer id;
 	private String name;
 	private static final long serialVersionUID = 1L;
+	
+	private List<Information> informations;
 
 	public Category() {
 		super();
@@ -35,6 +39,13 @@ public class Category implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	@OneToMany(mappedBy="category")
+	public List<Information> getInformations() {
+		return informations;
+	}
+	public void setInformations(List<Information> informations) {
+		this.informations = informations;
 	}
    
 }
