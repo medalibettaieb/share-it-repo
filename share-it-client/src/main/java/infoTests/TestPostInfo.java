@@ -15,9 +15,15 @@ public class TestPostInfo {
 				.lookup("/share-it/InformationServices!services.interfaces.InformationServicesRemote");
 
 		Information information = new Information("real madrid 9 granada 1");
-		
-		Boolean b=informationServicesRemote.postInfo(1, information, 1);
-		System.out.println(b);
+		Information information2 = new Information(
+				"fadhl chaker rja3 el 3a9lou");
+		Information information3 = new Information("emino 5raj men 3a9lou");
+		Information information4 = new Information("psg 3 marseille 2");
+
+		informationServicesRemote.postInfo(1, information, 1);
+		informationServicesRemote.postInfo(1, information4, 1);
+		informationServicesRemote.postInfo(3, information3, 2);
+		informationServicesRemote.postInfo(3, information2, 2);
 	}
 
 }

@@ -13,4 +13,8 @@ public interface InformationServicesRemote {
 
 	List<Information> findAllPostsByIdCustomer(Integer idCustomer);
 
+	List<Information> findAllPostsByIdFollowedCustomer(
+			Integer idFollowedCustomer, Integer idFollowerCustomer);
+
+	List<Information> findAllFollowedPosts();
 }

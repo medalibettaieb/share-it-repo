@@ -15,5 +15,6 @@ public class TestFollow {
 				.lookup("/share-it/UserManagement!services.interfaces.UserManagementRemote");
 
 		proxy.follow(3, 1);
+		proxy.follow(3, 2);
 	}
 }

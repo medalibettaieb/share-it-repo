@@ -1,5 +1,6 @@
 package services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -54,6 +55,29 @@ public class InformationServices implements InformationServicesRemote,
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("param1", idCustomer);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Information> findAllPostsByIdFollowedCustomer(
+			Integer idFollowedCustomer, Integer idFollowerCustomer) {
+		List<Information> informations = new ArrayList<Information>();
+		Customer followed = entityManager.find(Customer.class,
+				idFollowedCustomer);
+		Customer follower = entityManager.find(Customer.class,
+				idFollowerCustomer);
+		if (followed.getFollowers().contains(follower)) {
+			informations = findAllPostsByIdCustomer(idFollowedCustomer);
+		} else {
+			System.err.println("emmm haw fibali ...");
+		}
+
+		return informations;
+	}
+
+	@Override
+	public List<Information> findAllFollowedPosts() {
+
+		return null;
 	}
 
 }
