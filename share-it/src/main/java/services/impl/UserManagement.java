@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import services.interfaces.UserManagementLocal;
 import services.interfaces.UserManagementRemote;
+import domain.Customer;
 import domain.User;
 
 /**
@@ -98,6 +99,21 @@ public class UserManagement implements UserManagementRemote,
 		}
 		return allUsers;
 
+	}
+
+	@Override
+	public Boolean follow(Integer idFollowed, Integer idFollower) {
+		Boolean b = false;
+		try {
+			Customer followed = (Customer) findUserById(idFollowed);
+			Customer follower = (Customer) findUserById(idFollower);
+
+			followed.getFollowers().add(follower);
+			entityManager.merge(followed);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
 	}
 
 }

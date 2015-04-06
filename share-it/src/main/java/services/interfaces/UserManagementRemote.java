@@ -20,4 +20,6 @@ public interface UserManagementRemote {
 
 	List<User> findAllUsers();
 
+	Boolean follow(Integer idFollowed, Integer idFollower);
+
 }
