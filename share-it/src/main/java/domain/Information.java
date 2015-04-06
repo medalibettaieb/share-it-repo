@@ -3,6 +3,8 @@ package domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -24,7 +26,13 @@ public class Information implements Serializable {
 		super();
 	}
 
+	public Information(String info) {
+		super();
+		this.info = info;
+	}
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.id;
 	}
