@@ -26,18 +26,21 @@ public class UserBean {
 	}
 
 	public String doLogin() {
+		String navigateTo = "";
 		User userLoggedIn = userManagementLocal.login(user.getLogin(),
 				user.getPassword());
 		if (userLoggedIn != null) {
 			if (userLoggedIn instanceof Customer) {
-				System.out.println("customer");
+				user = userLoggedIn;
+				navigateTo = "/pages/customer/customerHome?faces-redirect=true";
 			} else {
-				System.out.println("admin");
+				user = userLoggedIn;
+				navigateTo = "/pages/admin/adminHome?faces-redirect=true";
 			}
 		} else {
-			System.out.println("user not found");
+			navigateTo = "/error?faces-redirect=true";
 		}
-		return "";
+		return navigateTo;
 	}
 
 	public Customer getCustomer() {
