@@ -1,0 +1,6 @@
+/target/
+/.settings/
+/workJEE/
+/.classpath
+/.project
+/.tern-project
