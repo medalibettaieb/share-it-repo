@@ -21,4 +21,6 @@ public interface UserManagementLocal {
 	List<User> findAllUsers();
 
 	Boolean follow(Integer idFollowed, Integer idFollower);
+
+	User login(String login, String password);
 }

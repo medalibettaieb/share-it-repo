@@ -116,4 +116,18 @@ public class UserManagement implements UserManagementRemote,
 		return b;
 	}
 
+	@Override
+	public User login(String login, String password) {
+		User userFound = null;
+		try {
+			String jpql = "select u from User u where u.login=:param1 and u.password=:param2";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("param1", login);
+			query.setParameter("param2", password);
+			userFound = (User) query.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("user not found ...");
+		}
+		return userFound;
+	}
 }
