@@ -10,13 +10,11 @@
 	<h:form>
 		<h:selectOneMenu value="#{categoryBean.selectedCategory}"
 			converter="cc">
-			<f:selectItem value="select one category" />
+			<f:selectItem itemLabel="please select a category" />
 			<f:selectItems value="#{categoryBean.categories}" var="c"
-				itemLabel="#{c.name}" itemValue="#{c}"></f:selectItems>
+				itemLabel="#{c.name}" itemValue="#{c.name}"></f:selectItems>
 		</h:selectOneMenu>
-
-
-
+		<h:commandButton action="#{categoryBean.dodisplay}" value="zid" />
 	</h:form>
 </body>
 </html>

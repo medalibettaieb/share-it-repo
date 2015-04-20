@@ -22,6 +22,10 @@ public class CategoryBean {
 		return informationServicesLocal.findCategoryByName(name);
 	}
 
+	public void dodisplay() {
+		System.out.println(selectedCategory.getName());
+	}
+
 	public List<Category> getCategories() {
 		categories = informationServicesLocal.findAllCategories();
 		return categories;
