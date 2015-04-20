@@ -32,6 +32,7 @@ public class Populator {
 		Customer customer2 = new Customer("iheb", "iheb", "iheb");
 		Customer customer3 = new Customer("lamia", "lamia", "lamia");
 		Customer customer4 = new Customer("haifa", "haifa", "haifa");
+		Customer customer5 = new Customer("iheb", "iheb2", "iheb2");
 
 		Admin admin = new Admin("ali", "ali", "ali");
 
@@ -42,6 +43,7 @@ public class Populator {
 		entityManager.persist(customer2);
 		entityManager.persist(customer3);
 		entityManager.persist(customer4);
+		entityManager.persist(customer5);
 		entityManager.persist(admin);
 		entityManager.persist(category);
 		entityManager.persist(category2);

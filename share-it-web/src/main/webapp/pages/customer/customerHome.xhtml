@@ -6,9 +6,10 @@
 	<ui:define name="pageTitle">customer home</ui:define>
 	<ui:define name="pageContent">
 welcome Mr/Ms #{userBean.user.name}
-
-
+<br />
+		<h:form>
+			<h:commandLink action="searchUsers" value="searchUsers" />
+		</h:form>
 	</ui:define>
-
 </ui:composition>
 

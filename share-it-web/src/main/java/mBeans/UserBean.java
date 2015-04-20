@@ -1,5 +1,8 @@
 package mBeans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,11 +21,23 @@ public class UserBean {
 	// models
 	private Customer customer = new Customer();
 	private User user = new User();
+	private String name;
+	private List<User> customers = new ArrayList<>();
 
 	// methods
 	public String doCreateCustomer() {
 		userManagementLocal.addUser(customer);
 		return "";
+	}
+	public String doFollow() {
+		userManagementLocal.follow(customer.getId(), user.getId());
+		return "";
+	}
+
+	public String doFindUsersByName() {
+		setCustomers(userManagementLocal.findUsersByName(name));
+		System.out.println(customers.size());
+		return "/pages/customer/customersList?faces-redirect=true";
 	}
 
 	public String doLogin() {
@@ -57,6 +72,22 @@ public class UserBean {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<User> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<User> customers) {
+		this.customers = customers;
 	}
 
 }

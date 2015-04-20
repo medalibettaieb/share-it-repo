@@ -130,4 +130,12 @@ public class UserManagement implements UserManagementRemote,
 		}
 		return userFound;
 	}
+
+	@Override
+	public List<User> findUsersByName(String name) {
+		return entityManager
+				.createQuery("select u from User u where u.name=:param1",
+						User.class).setParameter("param1", name)
+				.getResultList();
+	}
 }

@@ -23,4 +23,6 @@ public interface UserManagementLocal {
 	Boolean follow(Integer idFollowed, Integer idFollower);
 
 	User login(String login, String password);
+
+	List<User> findUsersByName(String name);
 }
