@@ -29,6 +29,7 @@ public class UserBean {
 		userManagementLocal.addUser(customer);
 		return "";
 	}
+
 	public String doFollow() {
 		userManagementLocal.follow(customer.getId(), user.getId());
 		return "";
@@ -89,5 +90,7 @@ public class UserBean {
 	public void setCustomers(List<User> customers) {
 		this.customers = customers;
 	}
+
+
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import domain.Category;
 import domain.Information;
 
 @Local
@@ -17,4 +18,8 @@ public interface InformationServicesLocal {
 			Integer idFollowedCustomer, Integer idFollowerCustomer);
 
 	List<Information> findAllFollowedPosts();
+
+	List<Category> findAllCategories();
+
+	Category findCategoryByName(String name);
 }

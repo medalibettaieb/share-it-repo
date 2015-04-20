@@ -80,4 +80,18 @@ public class InformationServices implements InformationServicesRemote,
 		return null;
 	}
 
+	@Override
+	public List<Category> findAllCategories() {
+		return entityManager.createQuery("select c from Category c",
+				Category.class).getResultList();
+	}
+
+	@Override
+	public Category findCategoryByName(String name) {
+		return entityManager
+				.createQuery("select c from Category c where c.name=:param1",
+						Category.class).setParameter("param1", name)
+				.getSingleResult();
+	}
+
 }

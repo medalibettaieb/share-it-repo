@@ -25,4 +25,5 @@ public interface UserManagementLocal {
 	User login(String login, String password);
 
 	List<User> findUsersByName(String name);
+	
 }
