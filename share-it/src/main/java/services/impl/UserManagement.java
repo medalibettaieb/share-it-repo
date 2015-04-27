@@ -138,4 +138,18 @@ public class UserManagement implements UserManagementRemote,
 						User.class).setParameter("param1", name)
 				.getResultList();
 	}
+
+	@Override
+	public List<Customer> findAllCustomers() {
+		return entityManager.createQuery("select c from Customer c",
+				Customer.class).getResultList();
+	}
+
+	@Override
+	public List<Customer> findCustomersByName(String name) {
+		return entityManager
+				.createQuery("select c from Customer c where c.name=:param1",
+						Customer.class).setParameter("param1", name)
+				.getResultList();
+	}
 }

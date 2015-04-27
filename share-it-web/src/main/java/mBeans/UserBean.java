@@ -3,6 +3,7 @@ package mBeans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,11 +23,22 @@ public class UserBean {
 	private Customer customer = new Customer();
 	private User user = new User();
 	private String name;
-	private List<User> customers = new ArrayList<>();
+	private List<Customer> customers = new ArrayList<>();
+	private Boolean visibility = false;
 
 	// methods
 	public String doCreateCustomer() {
 		userManagementLocal.addUser(customer);
+		return "";
+	}
+
+	public String doUpdateCustomer() {
+		userManagementLocal.updateUser(customer);
+		return "";
+	}
+
+	public String doDeleteCustomer() {
+		userManagementLocal.deleteUser(customer.getId());
 		return "";
 	}
 
@@ -36,8 +48,7 @@ public class UserBean {
 	}
 
 	public String doFindUsersByName() {
-		setCustomers(userManagementLocal.findUsersByName(name));
-		System.out.println(customers.size());
+		setCustomers(userManagementLocal.findCustomersByName(name));
 		return "/pages/customer/customersList?faces-redirect=true";
 	}
 
@@ -57,6 +68,16 @@ public class UserBean {
 			navigateTo = "/error?faces-redirect=true";
 		}
 		return navigateTo;
+	}
+
+	public String doSelectCustomer() {
+		visibility = true;
+		return "";
+	}
+
+	@PostConstruct
+	public void doInitListCustomers() {
+		customers = userManagementLocal.findAllCustomers();
 	}
 
 	public Customer getCustomer() {
@@ -83,14 +104,20 @@ public class UserBean {
 		this.name = name;
 	}
 
-	public List<User> getCustomers() {
+	public List<Customer> getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(List<User> customers) {
+	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
 
+	public Boolean getVisibility() {
+		return visibility;
+	}
 
+	public void setVisibility(Boolean visibility) {
+		this.visibility = visibility;
+	}
 
 }

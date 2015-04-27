@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import domain.Customer;
 import domain.User;
 
 @Local
@@ -25,5 +26,9 @@ public interface UserManagementLocal {
 	User login(String login, String password);
 
 	List<User> findUsersByName(String name);
+	
+	List<Customer> findAllCustomers();
+	
+	List<Customer> findCustomersByName(String name);
 	
 }
