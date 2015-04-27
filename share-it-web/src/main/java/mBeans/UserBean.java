@@ -25,6 +25,7 @@ public class UserBean {
 	private String name;
 	private List<Customer> customers = new ArrayList<>();
 	private Boolean visibility = false;
+	private Boolean loggedInAsAdmin=false;
 
 	// methods
 	public String doCreateCustomer() {
@@ -66,6 +67,7 @@ public class UserBean {
 					navigateTo = "/pages/customer/customerHome?faces-redirect=true";
 				}
 			} else {
+				loggedInAsAdmin = true;
 				user = userLoggedIn;
 				navigateTo = "/pages/admin/adminHome?faces-redirect=true";
 			}
@@ -130,5 +132,15 @@ public class UserBean {
 	public void setVisibility(Boolean visibility) {
 		this.visibility = visibility;
 	}
+
+	public Boolean getLoggedInAsAdmin() {
+		return loggedInAsAdmin;
+	}
+
+	public void setLoggedInAsAdmin(Boolean loggedInAsAdmin) {
+		this.loggedInAsAdmin = loggedInAsAdmin;
+	}
+
+	
 
 }
