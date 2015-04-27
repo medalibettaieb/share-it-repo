@@ -14,7 +14,11 @@
 			<f:selectItems value="#{categoryBean.categories}" var="c"
 				itemLabel="#{c.name}" itemValue="#{c.name}"></f:selectItems>
 		</h:selectOneMenu>
-		<h:commandButton action="#{categoryBean.dodisplay}" value="zid" />
+<h:panelGrid columns="2">
+		<h:outputText value="info description" />
+		<h:inputText value="#{infoBean.information.info}" />
+		</h:panelGrid>
+		<h:commandButton action="#{infoBean.doPostInfo}" value="post" />
 	</h:form>
 </body>
 </html>
