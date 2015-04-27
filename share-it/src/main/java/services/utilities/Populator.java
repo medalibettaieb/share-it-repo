@@ -29,6 +29,7 @@ public class Populator {
 	@PostConstruct
 	public void initDb() {
 		Customer customer = new Customer("hedi", "hedi", "hedi");
+		customer.setBanned(true);
 		Customer customer2 = new Customer("iheb", "iheb", "iheb");
 		Customer customer3 = new Customer("lamia", "lamia", "lamia");
 		Customer customer4 = new Customer("haifa", "haifa", "haifa");

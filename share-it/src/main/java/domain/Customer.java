@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 public class Customer extends User implements Serializable {
 
 	private Float cash = 100F;
+	private Boolean banned=false;
 	private static final long serialVersionUID = 1L;
 
 	public Customer() {
@@ -31,6 +32,14 @@ public class Customer extends User implements Serializable {
 
 	public void setCash(Float cash) {
 		this.cash = cash;
+	}
+
+	public Boolean getBanned() {
+		return banned;
+	}
+
+	public void setBanned(Boolean banned) {
+		this.banned = banned;
 	}
 
 }

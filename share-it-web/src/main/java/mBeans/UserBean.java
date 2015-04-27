@@ -60,7 +60,11 @@ public class UserBean {
 		if (userLoggedIn != null) {
 			if (userLoggedIn instanceof Customer) {
 				user = userLoggedIn;
-				navigateTo = "/pages/customer/customerHome?faces-redirect=true";
+				if (((Customer) userLoggedIn).getBanned() == true) {
+					navigateTo = "/pages/customer/customerBanned?faces-redirect=true";
+				} else {
+					navigateTo = "/pages/customer/customerHome?faces-redirect=true";
+				}
 			} else {
 				user = userLoggedIn;
 				navigateTo = "/pages/admin/adminHome?faces-redirect=true";
@@ -73,6 +77,12 @@ public class UserBean {
 
 	public String doSelectCustomer() {
 		visibility = true;
+		return "";
+	}
+
+	public String doBann() {
+		customer.setBanned(true);
+		userManagementLocal.updateUser(customer);
 		return "";
 	}
 
