@@ -39,6 +39,7 @@ public class UserBean {
 
 	public String doDeleteCustomer() {
 		userManagementLocal.deleteUser(customer.getId());
+		customers.remove(customer);
 		return "";
 	}
 

@@ -45,6 +45,7 @@ public class UserManagement implements UserManagementRemote,
 		Boolean b = false;
 		try {
 			entityManager.remove(findUserById(idUser));
+			System.out.println(findUserById(idUser).getName());
 			b = true;
 		} catch (Exception e) {
 		}
